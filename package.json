@@ -1,0 +1,22 @@
+{
+  "name": "notes-for-functional-javascript",
+  "version": "1.0.0",
+  "description": "Notes taken while reading Fogus' Functional JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedcn/notes-for-functional-javascript.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Jed Northridge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jedcn/notes-for-functional-javascript/issues"
+  },
+  "homepage": "https://github.com/jedcn/notes-for-functional-javascript"
+}
