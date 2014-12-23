@@ -4,7 +4,8 @@
   "description": "Notes taken while reading Fogus' Functional JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "jasmine-node spec",
+    "start": "jasmine-node --autoTest spec"
   },
   "repository": {
     "type": "git",
