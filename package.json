@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/jedcn/notes-for-functional-javascript",
   "dependencies": {
-    "jasmine-node": "^2.0.0"
+    "jasmine-node": "^2.0.0",
+    "underscore": "^1.7.0"
   }
 }
