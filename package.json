@@ -4,7 +4,7 @@
   "description": "Notes taken while reading Fogus' Functional JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node"
+    "test": "jasmine-node spec"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/jedcn/notes-for-functional-javascript/issues"
   },
-  "homepage": "https://github.com/jedcn/notes-for-functional-javascript"
+  "homepage": "https://github.com/jedcn/notes-for-functional-javascript",
+  "dependencies": {
+    "jasmine-node": "^2.0.0"
+  }
 }
