@@ -45,10 +45,10 @@ But- if you're reading the book, and you'd like to `require` the
 functions in that you're reading about, you could create an NPM
 project with the following dependency in its `package.json`:
 
-```javascript
-  "dependencies": {
-    "notes-for-functional-javascript": "git://github.com/jedcn/notes-for-functional-javascript"
-  }
+```json
+"dependencies": {
+  "notes-for-functional-javascript": "git://github.com/jedcn/notes-for-functional-javascript"
+}
 ```
 
 Then, in your own project, you could run an `npm install` and execute
