@@ -3,8 +3,8 @@
 //
 
 var importAll = require("./core.js").importAll;
-importAll("./chapterOne.js");
-importAll("./chapterTwo.js");
+importAll("./chapter01.js");
+importAll("./chapter02.js");
 
 
 var _ = require("underscore");

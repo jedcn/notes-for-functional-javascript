@@ -1,4 +1,4 @@
-var chapterOne = require("../js/chapterOne.js");
+var chapterOne = require("../js/chapter01.js");
 var splat = chapterOne.splat;
 var lameCSV = chapterOne.lameCSV;
 
