@@ -6,21 +6,26 @@ These are "notes" I took while reading
 Mr. Fogus has put all of the code for Functional JavaScript
 [online][fun-js-code].
 
+This repository contains a subset of the Functional JavaScript code in
+files underneath the `js/` directory. This code was written by Michael
+Fogus.
+
 [fun-js-site]: http://functionaljavascript.com/
 [fogus-site]: http://fogus.me/
 
 ## So, what's this, then?
 
-These are specs I wrote in jasmine to help me follow along.
-
-In particular, if I wrote some code and ran some code I could better
-understand the ideas in the book.
-
 If you cloned this repository to your machine, you would find source
 in `js/`. It's a subset of what's available at the
-[official source][fun-js-code].
+[official source][fun-js-code], was written by Michael Fogus, and I
+entered it back in as I followed along.
 
 [fun-js-code]: https://github.com/funjs/book-source
+
+With the original source in place, I wrote some code underneath
+`specs/` in jasmine to help me follow along while reading the book. To
+be explicit, it's very helpful to write code while you're reading
+code.
 
 The specs (located in `spec/`) mostly mirror examples in the
 book. Sometimes they explore boundary conditions that I didn't
@@ -29,7 +34,7 @@ understand.
 ## How is it used?
 
 If you have this locally, you could run `npm install` to grab any
-dependencies. You can run all of the specs with `npm test`.
+dependencies. You can then run all of the specs with `npm test`.
 
 You can also take advantage of `npm start`: this sets up a watcher and
 runs the tests whenever you modify the specs.
@@ -39,7 +44,8 @@ runs the tests whenever you modify the specs.
 I made it an npm package to take advantage of dependency management
 and support `npm test` and `npm start`.
 
-There's no original work here, and so, I don't expect to publish it.
+There's no original or interesting work here, and so, I don't expect
+to publish it.
 
 But- if you're reading the book, and you'd like to `require` the
 functions in that you're reading about, you could create an NPM
