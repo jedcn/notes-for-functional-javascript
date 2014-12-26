@@ -1,3 +1,5 @@
+require("./core.js")
+  .importAll("./core.js");
 
 var _ = require('underscore');
 
@@ -45,11 +47,25 @@ function always(value) {
   }
 }
 
+function invoker(name, method) {
+  return function(target /* args ... */) {
+    if (!existy(target)) {
+      fail("Must provide a target");
+    }
+    var targetMethod = target[name];
+    var args = _.rest(arguments);
+    return doWhen((existy(targetMethod) && method === targetMethod), function() {
+      return targetMethod.apply(target, args);
+    });
+  };
+}
+
 var functionsToExport = [finder,
                          best,
                          repeat,
                          repeatedly,
                          iterateUntil,
-                         always];
+                         always,
+                         invoker];
 
 _.each(functionsToExport, exportFunction);

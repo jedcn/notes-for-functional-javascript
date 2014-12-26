@@ -1,8 +1,7 @@
-var chapterFour = require("../js/chapterFour.js");
 var _ = require("underscore");
-_.each(_.keys(chapterFour), function(name) {
-  this[name] = chapterFour[name];
-});
+
+require("../js/core.js")
+  .importAll("../js/chapterFour.js");
 
 describe("Chapter 4", function() {
   describe("finder", function() {
@@ -75,4 +74,12 @@ describe("Chapter 4", function() {
       // https://leanpub.com/javascript-allonge here..
     });
   });
+
+  describe("invoker", function() {
+    it("invokes a named method on various targets", function() {
+      var rev = invoker('reverse', Array.prototype.reverse);
+      expect(_.map([[1, 2, 3]], rev)).toEqual([[3, 2, 1]]);
+    });
+  });
+
 });
