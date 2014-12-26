@@ -40,3 +40,34 @@ I made it an npm package to take advantage of dependency management
 and support `npm test` and `npm start`.
 
 There's no original work here, and so, I don't expect to publish it.
+
+But- if you're reading the book, and you'd like to `require` the
+functions in that you're reading about, you could create an NPM
+project with the following dependency in its `package.json`:
+
+```javascript
+  "dependencies": {
+    "notes-for-functional-javascript": "git://github.com/jedcn/notes-for-functional-javascript"
+  }
+```
+
+Then, in your own project, you could run an `npm install` and execute
+code like this:
+
+```javascript
+var notes = require("notes-for-functional-javascript");
+
+var alwaysTrue = notes.always(true);
+console.log(alwaysTrue()); // true
+```
+
+I prefer to invoke Mr. Fogus' functions as if they were globally
+available and so you can add `/global` to the end of the require and
+do that:
+
+```javascript
+require("notes-for-functional-javascript/global");
+
+var alwaysTrue = always(true);
+console.log(alwaysTrue()); // true
+```
