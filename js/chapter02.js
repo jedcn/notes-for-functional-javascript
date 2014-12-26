@@ -2,7 +2,7 @@
 // See: https://github.com/funjs/book-source/blob/master/chapter02.js
 //
 
-var existy = require("./chapter01.js").existy;
+require("./importAll.js").importAll("chapter01.js");
 var _ = require("underscore");
 
 function cat() {

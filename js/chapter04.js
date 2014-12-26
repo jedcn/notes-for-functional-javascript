@@ -2,10 +2,9 @@
 // See: https://github.com/funjs/book-source/blob/master/chapter04.js
 //
 
-var importAll = require("./core.js").importAll;
-importAll("./chapter01.js");
-importAll("./chapter02.js");
-
+var importAll = require("./importAll.js").importAll;
+importAll("chapter01.js");
+importAll("chapter02.js");
 
 var _ = require("underscore");
 
