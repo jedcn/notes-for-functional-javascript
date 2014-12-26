@@ -102,6 +102,10 @@ function hasKeys() {
   return fun;
 }
 
+// This is what Fogus calls a "fluent api:" reading the method names
+// and their arguments is a sensible (albeit rough) sentence.
+//
+// In particular, he calls out hasKeys as "beautifully fluent."
 exports.checkCommand = checker(validator("Must be a map", aMap),
                                hasKeys("message", "type"));
 
