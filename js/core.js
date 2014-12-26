@@ -29,12 +29,12 @@ function cat() {
   }
 }
 
-// This is a function that I declared to help me locally import all
+// This is a function that I declared to help me globally import all
 // functions exposed in a module
 function importAll(moduleName) {
   var module = require(moduleName);
   _.each(_.keys(module), function(name) {
-    this[name] = module[name];
+    global[name] = module[name];
   });
 }
 
