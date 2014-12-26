@@ -11,8 +11,8 @@ function exportAllInside(modulePath) {
 function requireAndExportFilesIn(dir) {
   var files = fs.readdirSync(dir);
   _.each(files, function(file) {
-    exportAllInside("./" + dir + "/" + file);
+    exportAllInside(dir + "/" + file);
   });
 }
 
-requireAndExportFilesIn("js");
+requireAndExportFilesIn(__dirname + "/js");
