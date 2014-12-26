@@ -97,4 +97,50 @@ describe("Chapter 4", function() {
     });
   });
 
+  describe("checker", function() {
+    it("works with a series of validators to build up a composite check", function() {
+
+      var alwaysPasses = checker(always(true), always(true));
+      expect(alwaysPasses({})).toEqual([]);
+
+      var fails = always(false);
+      fails.message = "It's no good!";
+      var alwaysFails = checker(fails);
+      expect(alwaysFails({})).toEqual(["It's no good!"]);
+    });
+  });
+
+  describe("validator", function() {
+    it("is a function for building validators that work with checker", function() {
+      var gonnaFail = checker(validator("ZOMG!", always(false)));
+      expect(gonnaFail(100)).toEqual(["ZOMG!"]);
+    });
+  });
+
+  describe("checkCommand", function() {
+    it("is a combination of validators that verify a command object", function() {
+
+      // Presuming a valid command object is an object with these
+      // properties:
+      var validCommand = {
+        message: "Hi!",
+        type: "display",
+        from: "https://localhost:8080/node/frob"
+      };
+      var result = checkCommand(validCommand);
+      expect(result.length).toBe(0);
+
+      result = checkCommand(32);
+      expect(result).toEqual(["Must be a map", "Must have values for keys: message type"]);
+
+      result = checkCommand({});
+      expect(result).toEqual(["Must have values for keys: message type"]);
+
+      result = checkCommand({
+        type: "alert"
+      });
+      expect(result).toEqual(["Must have values for keys: message type"]);
+    });
+  });
+
 });

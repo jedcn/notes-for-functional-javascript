@@ -1,7 +1,7 @@
 require("./core.js")
   .importAll("./core.js");
 
-var _ = require('underscore');
+var _ = require("underscore");
 
 function finder(valueFun, bestFun, coll) {
   return _.reduce(coll, function(best, current) {
@@ -66,6 +66,45 @@ function fnull(fun /*, defaults */) {
   };
 }
 
+function checker(/* validators */) {
+  var validators = _.toArray(arguments);
+  return function(obj) {
+    return _.reduce(validators, function(errs, check) {
+      if (check(obj)) {
+        return errs;
+      } else {
+        return _.chain(errs).push(check.message).value();
+      }
+    }, []);
+  }
+}
+
+function validator(message, fun) {
+  var f = function(/* args */) {
+    return fun.apply(fun, arguments);
+  };
+  f['message'] = message;
+  return f;
+}
+
+function aMap(obj) {
+  return _.isObject(obj);
+}
+
+function hasKeys() {
+  var keys = _.toArray(arguments);
+  var fun = function(obj) {
+    return _.every(keys, function(k) {
+      return _.has(obj, k);
+    });
+  };
+  fun.message = cat(["Must have values for keys:"], keys).join(" ");
+  return fun;
+}
+
+exports.checkCommand = checker(validator("Must be a map", aMap),
+                               hasKeys("message", "type"));
+
 var functionsToExport = [finder,
                          best,
                          repeat,
@@ -73,7 +112,9 @@ var functionsToExport = [finder,
                          iterateUntil,
                          always,
                          invoker,
-                         fnull];
+                         fnull,
+                         checker,
+                         validator];
 
 function exportFunction(fun) {
   exports[fun.name] = fun;
