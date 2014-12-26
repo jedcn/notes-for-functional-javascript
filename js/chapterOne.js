@@ -1,12 +1,30 @@
+//
+// See: https://github.com/funjs/book-source/blob/master/chapter01.js
+//
+
+function existy(x) {
+  return x != null;
+};
+
+function truthy(x) {
+  return (x !== false) && existy(x);
+}
+
+function doWhen(cond, action) {
+  if(truthy(cond)) {
+    return action();
+  } else {
+    return undefined;
+  }
+}
+
 function splat(fun) {
   return function(array) {
     return fun.apply(null, array);
   };
 };
 
-exports.splat = splat;
-
-var _ = require('underscore');
+var _ = require("underscore");
 
 function lameCSV(str) {
   return _.reduce(str.split("\n"), function(table, row) {
@@ -15,4 +33,14 @@ function lameCSV(str) {
   }, []);
 };
 
-exports.lameCSV = lameCSV;
+var functionsToExport = [doWhen,
+                         existy,
+                         splat,
+                         truthy,
+                         lameCSV];
+
+function exportFunction(fun) {
+  exports[fun.name] = fun;
+}
+
+_.each(functionsToExport, exportFunction);

@@ -1,5 +1,11 @@
-require("./core.js")
-  .importAll("./core.js");
+//
+// See: https://github.com/funjs/book-source/blob/master/chapter04.js
+//
+
+var importAll = require("./core.js").importAll;
+importAll("./chapterOne.js");
+importAll("./chapterTwo.js");
+
 
 var _ = require("underscore");
 
