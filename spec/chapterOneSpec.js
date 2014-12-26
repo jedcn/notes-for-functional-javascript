@@ -1,7 +1,4 @@
-var chapterOne = require('../js/chapterOne.js');
-
-var splat = chapterOne.splat;
-var lameCSV = chapterOne.lameCSV;
+require("../global.js")
 
 describe('Chapter 1', function() {
   describe('splat', function() {

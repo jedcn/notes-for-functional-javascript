@@ -1,7 +1,6 @@
 var _ = require("underscore");
 
-require("../js/core.js")
-  .importAll("../js/chapterFour.js");
+require("../global.js")
 
 describe("Chapter 4", function() {
   describe("finder", function() {
