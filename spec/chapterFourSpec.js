@@ -82,4 +82,19 @@ describe("Chapter 4", function() {
     });
   });
 
+  describe("fnull", function() {
+    it("creates a version of a function coupled with default parameters", function() {
+      var nums = [ 1, 2, 3, null, 5 ];
+      var badResult = _.reduce(nums, function(total, n) {
+        return total * n;
+      })
+      expect(badResult).toEqual(0);
+
+      var safeMultiply = fnull(function(total, n) { return total * n; }, 1, 1);
+
+      var goodResult = _.reduce(nums, safeMultiply);
+      expect(goodResult).toEqual(30);
+    });
+  });
+
 });

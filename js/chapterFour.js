@@ -37,10 +37,6 @@ function iterateUntil(fun, check, init) {
   return ret;
 }
 
-function exportFunction(fun) {
-  exports[fun.name] = fun;
-}
-
 function always(value) {
   return function() {
     return value;
@@ -60,12 +56,27 @@ function invoker(name, method) {
   };
 }
 
+function fnull(fun /*, defaults */) {
+  var defaults = _.rest(arguments);
+  return function(/* args */) {
+    var args = _.map(arguments, function(e, i) {
+      return existy(e) ? e : defaults[i];
+    });
+    return fun.apply(null, args);
+  };
+}
+
 var functionsToExport = [finder,
                          best,
                          repeat,
                          repeatedly,
                          iterateUntil,
                          always,
-                         invoker];
+                         invoker,
+                         fnull];
+
+function exportFunction(fun) {
+  exports[fun.name] = fun;
+}
 
 _.each(functionsToExport, exportFunction);
