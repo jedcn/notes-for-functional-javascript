@@ -24,4 +24,13 @@ function dispatch(/* funs */) {
   };
 }
 
+function curry2(fun) {
+  return function(secondArg) {
+    return function(firstArg) {
+      return fun(firstArg, secondArg);
+    };
+  };
+}
+
 exports.dispatch = dispatch;
+exports.curry2 = curry2;

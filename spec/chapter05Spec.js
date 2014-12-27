@@ -11,4 +11,25 @@ describe("Chapter 5", function() {
       expect(str(_.range(10))).toEqual("0,1,2,3,4,5,6,7,8,9");
     })
   });
+
+  describe("curry2", function() {
+    it("helps make fluent apis", function() {
+      var greaterThan = curry2(function(lhs, rhs) { return lhs > rhs; });
+
+      var lessThan = curry2(function(lhs, rhs) { return lhs < rhs; });
+
+      var withinRange = checker(
+        validator("arg must be greater than 10", greaterThan(10)),
+        validator("arg must be less than 20", lessThan(20)));
+
+      var resultWith11 = withinRange(11);
+      expect(resultWith11).toEqual([]);
+
+      var resultWith20 = withinRange(20);
+      expect(resultWith20).toEqual(["arg must be less than 20"]);
+
+      var resultWith1 = withinRange(1);
+      expect(resultWith1).toEqual(["arg must be greater than 10"]);
+    });
+  });
 });
