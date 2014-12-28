@@ -36,4 +36,31 @@ describe("Chapter 5", function() {
       expect(resultWith1).toEqual(["arg must be greater than 10"]);
     });
   });
+
+  describe("conditional1", function() {
+    it("provides a mechanism for chaining pre-conditions before a function invocation", function() {
+      var sqrPre = condition1(
+        validator("arg must not be zero", complement(zero)),
+        validator("arg must be a number", _.isNumber));
+      expect(function() {
+        sqrPre(_.identity, 0);
+      }).toThrowError("arg must not be zero");
+      expect(function() {
+        sqrPre(_.identity, 'a');
+      }).toThrowError("arg must be a number");
+    });
+
+    describe("combined with partial1", function() {
+      it("allows you to couple pre-conditions and invocation ", function() {
+        var sqrPre = condition1(
+          validator("arg must not be zero", complement(zero)),
+          validator("arg must be a number", _.isNumber));
+        function uncheckedSqr(n) {
+          return n * n;
+        }
+        var checkedSqr = partial1(sqrPre, uncheckedSqr);
+        expect(checkedSqr(10)).toEqual(100);
+      });
+    });
+  });
 });
