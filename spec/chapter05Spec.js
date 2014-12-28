@@ -13,6 +13,10 @@ describe("Chapter 5", function() {
   });
 
   describe("curry2", function() {
+    // Note: The usefulness of currying in JavaScript is limited by
+    // the fact that JavaScript allows for variable arguments. Fogus
+    // recommends using Partial Application instead. It is generates
+    // functions that are "more like" standard JavaScript APIs.
     it("helps make fluent apis", function() {
       var greaterThan = curry2(function(lhs, rhs) { return lhs > rhs; });
 
