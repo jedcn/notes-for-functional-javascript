@@ -18,5 +18,10 @@ function construct(head, tail) {
   return cat([head], _.toArray(tail));
 }
 
+function mapcat(fun, coll) {
+  return cat.apply(null, _.map(coll, fun));
+}
+
 exports.cat = cat;
 exports.construct = construct;
+exports.mapcat = mapcat;
