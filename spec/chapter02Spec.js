@@ -24,4 +24,20 @@ describe("Chapter 2", function() {
       expect(result).toEqual([1, 4, 9, 16]);
     })
   });
+  describe("complement", function() {
+    it("it returns the complement of running a predicate", function() {
+      function wantsAllNulls() {
+        return _.reduce(_.toArray(arguments), function(memo, arg) {
+          return arg == null;
+        }, true)
+      }
+      expect(wantsAllNulls(null, null, null)).toBe(true);
+      expect(wantsAllNulls(null, null, 1)).toBe(false);
+
+      var wantsNoNulls = complement(wantsAllNulls);
+      expect(wantsNoNulls(1, 2, 3)).toBe(true);
+      expect(wantsNoNulls(1, 2, null)).toBe(false);
+    });
+  });
+
 });

@@ -14,6 +14,12 @@ function cat() {
   }
 }
 
+function complement(pred) {
+  return function() {
+    return ! pred.apply(null, _.toArray(arguments));
+  };
+}
+
 function construct(head, tail) {
   return cat([head], _.toArray(tail));
 }
@@ -23,5 +29,6 @@ function mapcat(fun, coll) {
 }
 
 exports.cat = cat;
+exports.complement = complement;
 exports.construct = construct;
 exports.mapcat = mapcat;
