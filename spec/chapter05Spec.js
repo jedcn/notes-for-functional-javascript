@@ -63,4 +63,42 @@ describe("Chapter 5", function() {
       });
     });
   });
+
+  describe("de-coupled pre and post condition checks around a function", function() {
+    it("works with _.compose and partial application (partial1)", function() {
+
+      var preConditions = condition1(
+        validator("arg must not be zero", complement(zero)),
+        validator("arg must be a number", _.isNumber));
+
+      function square(n) {
+        return n * n;
+      }
+
+      var checkPreConditionsThenSquare = partial1(preConditions, square);
+
+      function greaterThan(rhs) {
+        return function(lhs) {
+          return lhs > rhs;
+        }
+      }
+
+      var postConditions = condition1(
+        validator("result should be a number", _.isNumber),
+        validator("result should not be zero", complement(zero)),
+        validator("result should be positive", greaterThan(0)));
+
+      var checkPreConditionsThenSquareThenCheckPostConditions =
+          _.compose(partial(postConditions, _.identity), checkPreConditionsThenSquare);
+
+      var result = checkPreConditionsThenSquareThenCheckPostConditions(10);
+      expect(result).toEqual(100);
+
+      expect(function() {
+        // NaN is a number.. and it's not zero.. so it can get by the
+        // preConditions.
+        checkPreConditionsThenSquareThenCheckPostConditions(NaN);
+      }).toThrowError('result should be positive');
+    });
+  });
 });

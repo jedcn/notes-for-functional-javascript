@@ -76,8 +76,18 @@ function partial1(fun, arg1) {
   };
 }
 
+function partial(fun /*, pargs */) {
+  var pargs = _.rest(arguments);
+
+  return function(/* arguments */) {
+    var args = cat(pargs, _.toArray(arguments));
+    return fun.apply(fun, args);
+  };
+}
+
 exports.condition1 = condition1;
 exports.curry2 = curry2;
 exports.dispatch = dispatch;
+exports.partial = partial;
 exports.partial1 = partial1;
 exports.zero = zero;
