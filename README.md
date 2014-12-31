@@ -39,41 +39,33 @@ dependencies. You can then run all of the specs with `npm test`.
 You can also take advantage of `npm start`: this sets up a watcher and
 runs the tests whenever you modify the specs.
 
+Finally-- if you had it cloned locally-- you could create a file named
+`experimentingWithFun.js` and you could put code into that file like this:
+
+```javascript
+require("./global.js")
+var alwaysTrue = always(true);
+console.log(alwaysTrue());
+```
+
+And then you could see the result by running: `node
+experimentingWithFun.js`:
+
+```
+$ node experimentingWithFun.js
+true
+```
+
 ## It's also an NPM package?
 
 I made it an npm package to take advantage of dependency management
 and support `npm test` and `npm start`.
 
-There's no original or interesting work here, and so, I don't expect
-to publish it.
+## Should you use this?
 
-But- if you're reading the book, and you'd like to `require` the
-functions in that you're reading about, you could create an NPM
-project with the following dependency in its `package.json`:
+Nope.
 
-```json
-"dependencies": {
-  "notes-for-functional-javascript": "git://github.com/jedcn/notes-for-functional-javascript"
-}
-```
+Instead, I suspect the answer is [lemonad][lemonad] (pronounced
+lemonade).
 
-Then, in your own project, you could run an `npm install` and execute
-code like this:
-
-```javascript
-var notes = require("notes-for-functional-javascript");
-
-var alwaysTrue = notes.always(true);
-console.log(alwaysTrue()); // true
-```
-
-I prefer to invoke Mr. Fogus' functions as if they were globally
-available and so you can add `/global` to the end of the require and
-do that:
-
-```javascript
-require("notes-for-functional-javascript/global");
-
-var alwaysTrue = always(true);
-console.log(alwaysTrue()); // true
-```
+[lemonad]: https://github.com/fogus/lemonad
