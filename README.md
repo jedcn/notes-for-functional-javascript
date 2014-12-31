@@ -1,10 +1,10 @@
 # Notes for Functional JavaScript
 
 These are "notes" I took while reading
-[Functional JavaScript][fun-js-site] by [Michael Fogus][fogus-site].
+[Functional JavaScript by Michael Fogus (O'Reilly). Copyright 2013 Michael Fogus, 978-1-449-36072-6.][fun-js-site]
 
-Mr. Fogus has put all of the code for Functional JavaScript
-[online][fun-js-code].
+[Mr. Fogus][fogus-site] and O'Reilly have put all of the code for
+Functional JavaScript [online][fun-js-code].
 
 This repository contains a subset of the Functional JavaScript code in
 files underneath the `js/` directory. This code was written by Michael
